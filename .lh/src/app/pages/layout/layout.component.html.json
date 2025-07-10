@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 15,
+            "activePatchIndex": 16,
             "patches": [
                 {
                     "date": 1751607285235,
@@ -68,6 +68,10 @@
                 {
                     "date": 1752118726082,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n                 </ul>\n                 <div class=\"d-flex align-items-center\">\n                     <div class=\"operator-info me-3 d-none d-md-block\"><span id=\"operatorRoleBadge\"\n                             class=\"badge bg-light text-primary me-2\">Entry Operator</span><span\n-                            id=\"operatorName\">{{loginSrc.loggedUserData.emailId}}</span></div>\n+                            id=\"operatorName\">{{ loginSrc.loggedUserData ? loginSrc.loggedUserData.emailId : 'Guest' }}</span></div>\n                     <div class=\"dropdown\">\n                         <a href=\"#\" (click)=\"logout()\" class=\"btn btn-warning\"><i class=\"bi bi-box-arrow-right me-2\"></i>\n                             Logout</a></div>\n                 </div>\n"
+                },
+                {
+                    "date": 1752127799793,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,12 +15,12 @@\n                 </ul>\n                 <div class=\"d-flex align-items-center\">\n                     <div class=\"operator-info me-3 d-none d-md-block\"><span id=\"operatorRoleBadge\"\n                             class=\"badge bg-light text-primary me-2\">Entry Operator</span><span\n-                            id=\"operatorName\">{{ loginSrc.loggedUserData ? loginSrc.loggedUserData.emailId : 'Guest' }}</span></div>\n+                            id=\"operatorName\">{{loginSrc.loggedUserData.emailId}}</span></div>\n                     <div class=\"dropdown\">\n                         <a href=\"#\" (click)=\"logout()\" class=\"btn btn-warning\"><i class=\"bi bi-box-arrow-right me-2\"></i>\n-                            Logout</a></div>\n+                            Logout</a> </div>\n                 </div>\n             </div>\n         </div>\n     </nav>\n"
                 }
             ],
             "date": 1751607285235,
