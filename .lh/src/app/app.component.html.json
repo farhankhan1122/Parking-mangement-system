@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/app.component.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1751572084222,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1751572084222,
+            "name": "Commit-0",
+            "content": "\n<router-outlet />\n"
+        }
+    ]
+}

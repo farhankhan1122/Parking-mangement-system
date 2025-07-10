@@ -1,0 +1,54 @@
+{
+    "sourceFile": "src/app/pages/layout/layout.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1751607320736,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1751609513844,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,6 +7,17 @@\n   templateUrl: './layout.component.html',\n   styleUrl: './layout.component.css'\n })\n export class LayoutComponent {\n+    data: any\n+    userId: string\n \n+    constructor() {\n+      this.userId = ''\n+    }\n+\n+    ngOnInit() {\n+      this.data = localStorage.getItem('parkUser')\n+      console.log(data)\n+    }\n+    \n }\n"
+                },
+                {
+                    "date": 1751609519509,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,8 @@\n     }\n \n     ngOnInit() {\n       this.data = localStorage.getItem('parkUser')\n-      console.log(data)\n+      console.log(this.data)\n     }\n     \n }\n"
+                },
+                {
+                    "date": 1751609579611,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,8 @@\n     }\n \n     ngOnInit() {\n       this.data = localStorage.getItem('parkUser')\n-      console.log(this.data)\n+      console.log(JSON.stringify(this.data))\n     }\n     \n }\n"
+                },
+                {
+                    "date": 1751609588230,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,8 @@\n     }\n \n     ngOnInit() {\n       this.data = localStorage.getItem('parkUser')\n-      console.log(JSON.stringify(this.data))\n+      console.log(this.data)\n     }\n     \n }\n"
+                },
+                {
+                    "date": 1751610212901,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,10 +14,10 @@\n     constructor() {\n       this.userId = ''\n     }\n \n-    ngOnInit() {\n-      this.data = localStorage.getItem('parkUser')\n-      console.log(this.data)\n-    }\n+    // ngOnInit() {\n+    //   this.data = localStorage.getItem('parkUser')\n+    //   console.log(this.data)\n+    // }\n     \n }\n"
+                },
+                {
+                    "date": 1751610748507,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,17 @@\n+import { Component, inject } from '@angular/core';\n+import { RouterOutlet } from '@angular/router';\n+import { LoginService } from '../../services/login-service/login.service';\n+\n+@Component({\n+  selector: 'app-layout',\n+  imports: [RouterOutlet],\n+  templateUrl: './layout.component.html',\n+  styleUrl: './layout.component.css'\n+})\n+export class LayoutComponent {\n+\n+  loginService = inject(LoginService)\n+\n+\n+    \n+}\n"
+                },
+                {
+                    "date": 1751610815549,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,32 +9,9 @@\n   styleUrl: './layout.component.css'\n })\n export class LayoutComponent {\n \n-  loginService = inject(LoginService)\n+  loginSrc = inject(LoginService)\n \n \n     \n }\n-import { Component } from '@angular/core';\n-import { RouterOutlet } from '@angular/router';\n-\n-@Component({\n-  selector: 'app-layout',\n-  imports: [RouterOutlet],\n-  templateUrl: './layout.component.html',\n-  styleUrl: './layout.component.css'\n-})\n-export class LayoutComponent {\n-    data: any\n-    userId: string\n-\n-    constructor() {\n-      this.userId = ''\n-    }\n-\n-    // ngOnInit() {\n-    //   this.data = localStorage.getItem('parkUser')\n-    //   console.log(this.data)\n-    // }\n-    \n-}\n"
+                },
+                {
+                    "date": 1751611745595,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { Component, inject } from '@angular/core';\n-import { RouterOutlet } from '@angular/router';\n+import { Router, RouterOutlet } from '@angular/router';\n import { LoginService } from '../../services/login-service/login.service';\n \n @Component({\n   selector: 'app-layout',\n@@ -10,8 +10,15 @@\n })\n export class LayoutComponent {\n \n   loginSrc = inject(LoginService)\n+  router = inject(Router)\n \n \n+  logout() {\n+    localStorage.removeItem('parkUser')\n+    this.router.navigateByUrl('login')\n+  }\n+\n+\n     \n }\n"
+                },
+                {
+                    "date": 1751611754513,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n \n \n   logout() {\n     localStorage.removeItem('parkUser')\n-    this.router.navigateByUrl('login')\n+    this.router.navigateByUrl('/login')\n   }\n \n \n     \n"
+                }
+            ],
+            "date": 1751607320736,
+            "name": "Commit-0",
+            "content": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n  selector: 'app-layout',\n  imports: [RouterOutlet],\n  templateUrl: './layout.component.html',\n  styleUrl: './layout.component.css'\n})\nexport class LayoutComponent {\n\n}\n"
+        }
+    ]
+}

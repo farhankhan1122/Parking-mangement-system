@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/app/models/login.model.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1751601447159,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1751601958444,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,5 +7,17 @@\n     this.emailId = '',\n     this.password = ''\n   }\n \n+}\n+\n+\n+export interface LoginResponseData {\n+  userId: number\n+  emailId: string\n+  password: string\n+  createdDate: string\n+  projectName: string\n+  fullName: string\n+  mobileNo: string\n+  extraId: number\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1751612676466,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,5 +19,11 @@\n   projectName: string\n   fullName: string\n   mobileNo: string\n   extraId: number\n+}\n+\n+export interface ResponseModel {\n+  message: string\n+  result: boolean\n+  data: any\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1751601447159,
+            "name": "Commit-0",
+            "content": "export class LoginRequestData {\n    \n  emailId : string\n  password : string\n\n  constructor () {\n    this.emailId = '',\n    this.password = ''\n  }\n\n}"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/pages/dashboard/dashboard.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1751612868169,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1751612868169,
+            "name": "Commit-0",
+            "content": "import { Component, inject, OnInit } from '@angular/core';\nimport { DashboardService } from '../../services/dashboard/dashboard.service';\nimport { ResponseModel } from '../../models/login.model';\n\n@Component({\n  selector: 'app-dashboard',\n  imports: [],\n  templateUrl: './dashboard.component.html',\n  styleUrl: './dashboard.component.css'\n})\nexport class DashboardComponent implements OnInit {\n\n dashboardService = inject(DashboardService)\n\n  ngOnInit(): void {\n  }\n  \n  getSites() {\n    this.dashboardService.getSitesByClientId().subscribe((res: ResponseModel) => {\n\n    })\n  }\n}\n"
+        }
+    ]
+}

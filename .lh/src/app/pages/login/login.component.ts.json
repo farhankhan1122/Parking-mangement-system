@@ -1,0 +1,106 @@
+{
+    "sourceFile": "src/app/pages/login/login.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 22,
+            "patches": [
+                {
+                    "date": 1751602396220,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1751602513072,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n   loginObj: LoginRequestData = new LoginRequestData();\n   loginService = inject(LoginService)\n \n-  onLogin() {\n-    this.loginService.loginUser\n-  }\n+  // onLogin() {\n+  //   this.loginService.loginUser\n+  // }\n \n }\n"
+                },
+                {
+                    "date": 1751602587276,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n })\n export class LoginComponent {\n \n   loginObj: LoginRequestData = new LoginRequestData();\n-  loginService = inject(LoginService)\n+  // loginService = inject(LoginService)\n \n   // onLogin() {\n   //   this.loginService.loginUser\n   // }\n"
+                },
+                {
+                    "date": 1751602618234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,10 @@\n })\n export class LoginComponent {\n \n   loginObj: LoginRequestData = new LoginRequestData();\n+\n+  \n   // loginService = inject(LoginService)\n \n   // onLogin() {\n   //   this.loginService.loginUser\n"
+                },
+                {
+                    "date": 1751602778200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,11 @@\n export class LoginComponent {\n \n   loginObj: LoginRequestData = new LoginRequestData();\n \n-  \n+ngOnInit(): void {\n+    alert(this.loginObj);\n+  }\n   // loginService = inject(LoginService)\n \n   // onLogin() {\n   //   this.loginService.loginUser\n"
+                },
+                {
+                    "date": 1751602888549,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n \n   loginObj: LoginRequestData = new LoginRequestData();\n \n ngOnInit(): void {\n-    alert(this.loginObj);\n+    console.log(this.loginObj);\n   }\n   // loginService = inject(LoginService)\n \n   // onLogin() {\n"
+                },
+                {
+                    "date": 1751603008487,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,11 +15,11 @@\n \n ngOnInit(): void {\n     console.log(this.loginObj);\n   }\n-  // loginService = inject(LoginService)\n+  loginService = inject(LoginService)\n \n-  // onLogin() {\n-  //   this.loginService.loginUser\n-  // }\n+  onLogin() {\n+    this.loginService.loginUser\n+  }\n \n }\n"
+                },
+                {
+                    "date": 1751603067690,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,9 @@\n   }\n   loginService = inject(LoginService)\n \n   onLogin() {\n-    this.loginService.loginUser\n+    // this.loginService.loginUser\n+    console.log(\"login clicked\")\n   }\n \n }\n"
+                },
+                {
+                    "date": 1751603125994,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,13 +11,13 @@\n })\n export class LoginComponent {\n \n   loginObj: LoginRequestData = new LoginRequestData();\n+  loginService = inject(LoginService)\n \n ngOnInit(): void {\n     console.log(this.loginObj);\n   }\n-  loginService = inject(LoginService)\n \n   onLogin() {\n     // this.loginService.loginUser\n     console.log(\"login clicked\")\n"
+                },
+                {
+                    "date": 1751603240330,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,10 @@\n     console.log(this.loginObj);\n   }\n \n   onLogin() {\n-    // this.loginService.loginUser\n-    console.log(\"login clicked\")\n+    this.loginService.loginUser().subscribe(() => {\n+      alert('working')\n+    })\n   }\n \n }\n"
+                },
+                {
+                    "date": 1751603332980,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n     console.log(this.loginObj);\n   }\n \n   onLogin() {\n-    this.loginService.loginUser().subscribe(() => {\n+    this.loginService.loginUser(loginObj).subscribe(() => {\n       alert('working')\n     })\n   }\n \n"
+                },
+                {
+                    "date": 1751603358076,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n     console.log(this.loginObj);\n   }\n \n   onLogin() {\n-    this.loginService.loginUser(loginObj).subscribe(() => {\n+    this.loginService.loginUser(this.loginObj).subscribe(() => {\n       alert('working')\n     })\n   }\n \n"
+                },
+                {
+                    "date": 1751603380290,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import { Component, inject } from '@angular/core';\n import { FormsModule } from '@angular/forms'\n import { LoginService } from '../../services/login-service/login.service';\n-import { LoginRequestData } from '../../models/login.model';\n+import { LoginRequestData, LoginResponseData } from '../../models/login.model';\n \n @Component({\n   selector: 'app-login',\n   imports: [FormsModule],\n@@ -18,9 +18,9 @@\n     console.log(this.loginObj);\n   }\n \n   onLogin() {\n-    this.loginService.loginUser(this.loginObj).subscribe(() => {\n+    this.loginService.loginUser(this.loginObj).subscribe((res: LoginResponseData) => {\n       alert('working')\n     })\n   }\n \n"
+                },
+                {
+                    "date": 1751603407024,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n   }\n \n   onLogin() {\n     this.loginService.loginUser(this.loginObj).subscribe((res: LoginResponseData) => {\n-      alert('working')\n+      alert('user found ... navigating')\n     })\n   }\n \n }\n"
+                },
+                {
+                    "date": 1751603438122,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import { Component, inject } from '@angular/core';\n import { FormsModule } from '@angular/forms'\n import { LoginService } from '../../services/login-service/login.service';\n import { LoginRequestData, LoginResponseData } from '../../models/login.model';\n+import { error } from 'console';\n \n @Component({\n   selector: 'app-login',\n   imports: [FormsModule],\n@@ -20,8 +21,10 @@\n \n   onLogin() {\n     this.loginService.loginUser(this.loginObj).subscribe((res: LoginResponseData) => {\n       alert('user found ... navigating')\n+    },error => {\n+      alert('wrong credentials')\n     })\n   }\n \n }\n"
+                },
+                {
+                    "date": 1751603793567,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n import { Component, inject } from '@angular/core';\n import { FormsModule } from '@angular/forms'\n import { LoginService } from '../../services/login-service/login.service';\n import { LoginRequestData, LoginResponseData } from '../../models/login.model';\n-import { error } from 'console';\n \n @Component({\n   selector: 'app-login',\n   imports: [FormsModule],\n"
+                },
+                {
+                    "date": 1751607363847,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import { Component, inject } from '@angular/core';\n import { FormsModule } from '@angular/forms'\n import { LoginService } from '../../services/login-service/login.service';\n import { LoginRequestData, LoginResponseData } from '../../models/login.model';\n+import { Router } from '@angular/router';\n \n @Component({\n   selector: 'app-login',\n   imports: [FormsModule],\n@@ -19,9 +20,9 @@\n   }\n \n   onLogin() {\n     this.loginService.loginUser(this.loginObj).subscribe((res: LoginResponseData) => {\n-      alert('user found ... navigating')\n+      Router.nav\n     },error => {\n       alert('wrong credentials')\n     })\n   }\n"
+                },
+                {
+                    "date": 1751607371921,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n import { Component, inject } from '@angular/core';\n import { FormsModule } from '@angular/forms'\n import { LoginService } from '../../services/login-service/login.service';\n import { LoginRequestData, LoginResponseData } from '../../models/login.model';\n-import { Router } from '@angular/router';\n \n @Component({\n   selector: 'app-login',\n   imports: [FormsModule],\n@@ -20,9 +19,9 @@\n   }\n \n   onLogin() {\n     this.loginService.loginUser(this.loginObj).subscribe((res: LoginResponseData) => {\n-      Router.nav\n+      alert('user found ... navigating')\n     },error => {\n       alert('wrong credentials')\n     })\n   }\n"
+                },
+                {
+                    "date": 1751607454385,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import { Component, inject } from '@angular/core';\n import { FormsModule } from '@angular/forms'\n import { LoginService } from '../../services/login-service/login.service';\n import { LoginRequestData, LoginResponseData } from '../../models/login.model';\n+import { Router } from '@angular/router';\n \n @Component({\n   selector: 'app-login',\n   imports: [FormsModule],\n@@ -12,8 +13,9 @@\n export class LoginComponent {\n \n   loginObj: LoginRequestData = new LoginRequestData();\n   loginService = inject(LoginService)\n+  router = inject(Router)\n \n ngOnInit(): void {\n     console.log(this.loginObj);\n   }\n"
+                },
+                {
+                    "date": 1751607581861,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n import { FormsModule } from '@angular/forms'\n import { LoginService } from '../../services/login-service/login.service';\n import { LoginRequestData, LoginResponseData } from '../../models/login.model';\n import { Router } from '@angular/router';\n+import { DashboardComponent } from '../dashboard/dashboard.component';\n \n @Component({\n   selector: 'app-login',\n   imports: [FormsModule],\n@@ -21,9 +22,9 @@\n   }\n \n   onLogin() {\n     this.loginService.loginUser(this.loginObj).subscribe((res: LoginResponseData) => {\n-      alert('user found ... navigating')\n+      // this.router.navigate()\n     },error => {\n       alert('wrong credentials')\n     })\n   }\n"
+                },
+                {
+                    "date": 1751607634539,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,8 +23,9 @@\n \n   onLogin() {\n     this.loginService.loginUser(this.loginObj).subscribe((res: LoginResponseData) => {\n       // this.router.navigate()\n+      localStorage.setItem('parkUser', JSON.stringify(res))\n     },error => {\n       alert('wrong credentials')\n     })\n   }\n"
+                },
+                {
+                    "date": 1751607717414,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,10 +22,10 @@\n   }\n \n   onLogin() {\n     this.loginService.loginUser(this.loginObj).subscribe((res: LoginResponseData) => {\n-      // this.router.navigate()\n       localStorage.setItem('parkUser', JSON.stringify(res))\n+      this.router.navigateByUrl('/dashboard')\n     },error => {\n       alert('wrong credentials')\n     })\n   }\n"
+                },
+                {
+                    "date": 1751610642146,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,8 +23,9 @@\n \n   onLogin() {\n     this.loginService.loginUser(this.loginObj).subscribe((res: LoginResponseData) => {\n       localStorage.setItem('parkUser', JSON.stringify(res))\n+      this.loginService.loggedUserData = res;\n       this.router.navigateByUrl('/dashboard')\n     },error => {\n       alert('wrong credentials')\n     })\n"
+                }
+            ],
+            "date": 1751602396220,
+            "name": "Commit-0",
+            "content": "import { Component, inject } from '@angular/core';\nimport { FormsModule } from '@angular/forms'\nimport { LoginService } from '../../services/login-service/login.service';\nimport { LoginRequestData } from '../../models/login.model';\n\n@Component({\n  selector: 'app-login',\n  imports: [FormsModule],\n  templateUrl: './login.component.html',\n  styleUrl: './login.component.css'\n})\nexport class LoginComponent {\n\n  loginObj: LoginRequestData = new LoginRequestData();\n  loginService = inject(LoginService)\n\n  onLogin() {\n    this.loginService.loginUser\n  }\n\n}\n"
+        }
+    ]
+}

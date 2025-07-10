@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/app.config.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1751600932786,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1751600932786,
+            "name": "Commit-0",
+            "content": "import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';\nimport { provideRouter } from '@angular/router';\n\nimport { routes } from './app.routes';\nimport { provideClientHydration, withEventReplay } from '@angular/platform-browser';\nimport { provideHttpClient } from '@angular/common/http';\n\nexport const appConfig: ApplicationConfig = {\n  providers: [provideZoneChangeDetection({ eventCoalescing: true }), \n    provideRouter(routes), \n    provideClientHydration(withEventReplay()),\n    provideHttpClient()\n  ]\n};\n"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/app/services/dashboard/dashboard.service.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1751612145779,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1751612774342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,16 @@\n import { HttpClient } from '@angular/common/http';\n import { Injectable } from '@angular/core';\n+import { Observable } from 'rxjs';\n+import { ResponseModel } from '../../models/login.model';\n \n @Injectable({\n   providedIn: 'root'\n })\n export class DashboardService {\n \n   constructor(private http: HttpClient) { }\n \n-  getSitesByClientId() {\n-    this.http.get('https://api.freeprojectapi.com/api/SmartParking/GetSitesByClientId?id=2')\n+  getSitesByClientId(): Observable<ResponseModel> {\n+     return this.http.get<ResponseModel>('https://api.freeprojectapi.com/api/SmartParking/GetSitesByClientId?id=2')\n   }\n }\n"
+                },
+                {
+                    "date": 1751612945981,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,20 @@\n import { HttpClient } from '@angular/common/http';\n-import { Injectable } from '@angular/core';\n+import { inject, Injectable } from '@angular/core';\n import { Observable } from 'rxjs';\n import { ResponseModel } from '../../models/login.model';\n+import { LoginService } from '../login-service/login.service';\n \n @Injectable({\n   providedIn: 'root'\n })\n export class DashboardService {\n \n+  loginService = inject(LoginService);\n+\n   constructor(private http: HttpClient) { }\n \n   getSitesByClientId(): Observable<ResponseModel> {\n-     return this.http.get<ResponseModel>('https://api.freeprojectapi.com/api/SmartParking/GetSitesByClientId?id=2')\n+    const clientId = this.loginService.loggedUserData.extraId\n+     return this.http.get<ResponseModel>('https://api.freeprojectapi.com/api/SmartParking/GetSitesByClientId?id=' + clientId)\n   }\n }\n"
+                },
+                {
+                    "date": 1751612961697,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,7 +14,7 @@\n   constructor(private http: HttpClient) { }\n \n   getSitesByClientId(): Observable<ResponseModel> {\n     const clientId = this.loginService.loggedUserData.extraId\n-     return this.http.get<ResponseModel>('https://api.freeprojectapi.com/api/SmartParking/GetSitesByClientId?id=' + clientId)\n+     return this.http.get<ResponseModel>('https://api.freeprojectapi.com/api/SmartParking/GetSitesByClientId?id='+clientId)\n   }\n }\n"
+                }
+            ],
+            "date": 1751612145779,
+            "name": "Commit-0",
+            "content": "import { HttpClient } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class DashboardService {\n\n  constructor(private http: HttpClient) { }\n\n  getSitesByClientId() {\n    this.http.get('https://api.freeprojectapi.com/api/SmartParking/GetSitesByClientId?id=2')\n  }\n}\n"
+        }
+    ]
+}

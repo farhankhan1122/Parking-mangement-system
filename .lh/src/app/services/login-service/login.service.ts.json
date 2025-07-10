@@ -1,0 +1,46 @@
+{
+    "sourceFile": "src/app/services/login-service/login.service.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1751601190165,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1751601459855,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n import { HttpClient } from '@angular/common/http';\n import { Injectable } from '@angular/core';\n+import { LoginRequestData } from '../../models/login.model';\n \n @Injectable({\n   providedIn: 'root'\n })\n@@ -9,8 +10,8 @@\n   constructor(\n     private http: HttpClient\n   ) { }\n \n-  loginUser(obj: any) {\n+  loginUser(obj: LoginRequestData) {\n     this.http.post(\"https://api.freeprojectapi.com/api/SmartParking/login\", obj)\n   }\n }\n"
+                },
+                {
+                    "date": 1751602072415,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,7 +11,7 @@\n     private http: HttpClient\n   ) { }\n \n   loginUser(obj: LoginRequestData) {\n-    this.http.post(\"https://api.freeprojectapi.com/api/SmartParking/login\", obj)\n+    return this.http.post(\"https://api.freeprojectapi.com/api/SmartParking/login\", obj)\n   }\n }\n"
+                },
+                {
+                    "date": 1751602172059,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import { HttpClient } from '@angular/common/http';\n import { Injectable } from '@angular/core';\n-import { LoginRequestData } from '../../models/login.model';\n+import { LoginRequestData, LoginResponseData } from '../../models/login.model';\n+import { Observable } from 'rxjs';\n \n @Injectable({\n   providedIn: 'root'\n })\n@@ -10,8 +11,8 @@\n   constructor(\n     private http: HttpClient\n   ) { }\n \n-  loginUser(obj: LoginRequestData) {\n-    return this.http.post(\"https://api.freeprojectapi.com/api/SmartParking/login\", obj)\n+  loginUser(obj: LoginRequestData): Observable<LoginResponseData> {\n+    return this.http.post<LoginResponseData>(\"https://api.freeprojectapi.com/api/SmartParking/login\", obj)\n   }\n }\n"
+                },
+                {
+                    "date": 1751610329448,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,8 +7,10 @@\n   providedIn: 'root'\n })\n export class LoginService {\n \n+  loggedUserData !: LoginResponseData\n+\n   constructor(\n     private http: HttpClient\n   ) { }\n \n"
+                },
+                {
+                    "date": 1751611182062,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,14 @@\n   loggedUserData !: LoginResponseData\n \n   constructor(\n     private http: HttpClient\n-  ) { }\n+  ) { \n+    const loggedData = localStorage.getItem('parkUser')\n+    if(loggedData != null){\n+      this.loggedUserData = JSON.parse('parkUser')\n+    }\n+   }\n \n   loginUser(obj: LoginRequestData): Observable<LoginResponseData> {\n     return this.http.post<LoginResponseData>(\"https://api.freeprojectapi.com/api/SmartParking/login\", obj)\n   }\n"
+                },
+                {
+                    "date": 1751611200362,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n     private http: HttpClient\n   ) { \n     const loggedData = localStorage.getItem('parkUser')\n     if(loggedData != null){\n-      this.loggedUserData = JSON.parse('parkUser')\n+      this.loggedUserData = JSON.parse(loggedData)\n     }\n    }\n \n   loginUser(obj: LoginRequestData): Observable<LoginResponseData> {\n"
+                },
+                {
+                    "date": 1752117985452,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,22 +1,29 @@\n import { HttpClient } from '@angular/common/http';\n-import { Injectable } from '@angular/core';\n+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';\n import { LoginRequestData, LoginResponseData } from '../../models/login.model';\n import { Observable } from 'rxjs';\n+import { isPlatformBrowser } from '@angular/common';\n \n @Injectable({\n   providedIn: 'root'\n })\n export class LoginService {\n \n   loggedUserData !: LoginResponseData\n+  private isBrowser: boolean;\n \n   constructor(\n-    private http: HttpClient\n+    private http: HttpClient,\n+    @Inject(PLATFORM_ID) private platformId: object\n   ) { \n-    const loggedData = localStorage.getItem('parkUser')\n-    if(loggedData != null){\n-      this.loggedUserData = JSON.parse(loggedData)\n+    this.isBrowser = isPlatformBrowser(this.platformId)\n+\n+    if(this.isBrowser) {\n+      const loggedData = localStorage.getItem('parkUser')\n+      if(loggedData != null){\n+        this.loggedUserData = JSON.parse(loggedData)\n+      }\n     }\n    }\n \n   loginUser(obj: LoginRequestData): Observable<LoginResponseData> {\n"
+                }
+            ],
+            "date": 1751601190165,
+            "name": "Commit-0",
+            "content": "import { HttpClient } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class LoginService {\n\n  constructor(\n    private http: HttpClient\n  ) { }\n\n  loginUser(obj: any) {\n    this.http.post(\"https://api.freeprojectapi.com/api/SmartParking/login\", obj)\n  }\n}\n"
+        }
+    ]
+}
