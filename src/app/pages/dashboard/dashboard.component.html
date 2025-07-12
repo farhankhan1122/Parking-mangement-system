@@ -1,0 +1,217 @@
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h2 class="mb-1">Parking Dashboard</h2>
+            <p class="text-muted">Manage and monitor parking spots</p>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                <select class="form-select" [(ngModel)]="siteId" (change)="getBuildings()">
+                    <option value="0" selected>Select Site</option>
+                    @for (item of siteList ; track $index) {
+                    <option [value]="item.siteId">{{item.siteName}}</option>
+                    }
+                </select>
+                <select class="form-select" [(ngModel)]="buildingId" (change)="getFloors()">
+                    <option value="0">Select Building</option>
+                    @for (item of buildingList ; track $index) {
+                    <option [value]="item.buildingId">{{item.buildingName}}</option>
+                    }
+                </select>
+                <select class="form-select" [(ngModel)]="floorId" (change)="onSelectFloor()">
+                    <option value="0">Select Floor</option>
+                    @for (item of floorList ; track $index) {
+                    <option [value]="item.floorId">{{item.floorNo}}</option>
+                    }
+                </select>
+                <button type="button" class="btn btn-outline-primary">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+            <div class="card h-100 parking-stat-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h6 class="text-muted">Total Spots</h6>
+                            <h3 id="totalSpots" class="mb-0">50</h3>
+                        </div>
+                        <div class="stat-icon bg-primary text-white"><i class="bi bi-p-square"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+            <div class="card h-100 parking-stat-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h6 class="text-muted">Available</h6>
+                            <h3 id="availableSpots" class="mb-0 text-success">28</h3>
+                        </div>
+                        <div class="stat-icon bg-success text-white"><i class="bi bi-check-circle"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+            <div class="card h-100 parking-stat-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h6 class="text-muted">Occupied</h6>
+                            <h3 id="occupiedSpots" class="mb-0 text-danger">22</h3>
+                        </div>
+                        <div class="stat-icon bg-danger text-white"><i class="bi bi-x-circle"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3 mb-lg-0">
+            <div class="card h-100 parking-stat-card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h6 class="text-muted">Occupancy Rate</h6>
+                            <h3 id="occupancyRate" class="mb-0 text-primary">44%</h3>
+                        </div>
+                        <div class="stat-icon bg-info text-white"><i class="bi bi-graph-up"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><i class="bi bi-grid me-2"></i> Parking Layout</h5>
+            <div><button id="refreshLayout" class="btn btn-sm btn-outline-secondary me-2"><i
+                        class="bi bi-arrow-clockwise me-1"></i> Refresh </button>
+                <div class="btn-group btn-group-sm"><button data-view="grid" class="btn btn-outline-secondary active"><i
+                            class="bi bi-grid-3x3"></i></button><button data-view="list"
+                        class="btn btn-outline-secondary"><i class="bi bi-list"></i></button></div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="parking-legend mb-3">
+                <span class="legend-item">
+                    <span class="status-dot available"></span>
+                    Total({{parkingSpotArray.length}})
+                </span>
+                <span class="legend-item">
+                    <span class="status-dot available"></span>
+                    Available ()
+                </span>
+                <span class="legend-item">
+                    <span class="status-dot occupied"></span>
+                    Occupied ()
+                </span>
+            </div>
+            <div id="parkingLayout" class="parking-layout">
+                @for (item of parkingSpotArray; track $index){
+
+                <ng-container *ngIf="checkIfSpotBooked(item) as bookInfo">
+                    <div class="parking-spot occupied" (click)="openReleaseModal(bookInfo.parkId)">
+                        <i class="bi bi-p-square"></i>
+                        <div class="spot-number">{{item}}</div>
+                        <div class="spot-status">Occupied</div>
+                        <div class="vehicle-info">{{bookInfo.vehicleNo}}</div>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngIf="!checkIfSpotBooked(item) as bookInfo">
+                    <div class="parking-spot available" (click)="openModal(item)">
+                        <i class="bi bi-p-square"></i>
+                        <div class="spot-number">{{item}}</div>
+                        <div class="spot-status">Available</div>
+                    </div>
+                </ng-container>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Book Spot Modal -->
+<!-- create a file template property variable #bookSpot -->
+<div #bookSpot id="bookSpotModal" tabindex="-1" aria-hidden="true" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-white">
+                <h5 class="modal-title"><i class="bi bi-car-front me-2"></i> Book Parking Spot </h5>
+                <button (click)="closeModal()" type="button" data-bs-dismiss="modal" aria-label="Close"
+                    class="btn-close btn-close-white"></button>
+            </div>
+            <div class="modal-body">
+                <form novalidate="" id="bookSpotForm" class="">
+                    <div class="mb-3">
+                        <label class="form-label">Park Spot No</label>
+                        <input [(ngModel)]="bookSpotObj.parkSpotNo" type="text" name="parkSpotNo" readonly
+                            class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="vehicleNumber" class="form-label">Vehicle Number</label>
+                        <input [(ngModel)]="bookSpotObj.vehicleNo" type="text" name="vehicleNo" id="vehicleNumber"
+                            placeholder="Enter vehicle number" required class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="vehicleType" class="form-label">Amount</label>
+                        <input [(ngModel)]="bookSpotObj.amount" type="number" name="amount" id="vehicleNumber"
+                            placeholder="Enter Amount " required="" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="driverName" class="form-label">Customer Name</label>
+                        <input [(ngModel)]="bookSpotObj.custName" type="text" name="custName" id="driverName"
+                            placeholder="Customer name" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactNumber" class="form-label">Contact Number</label>
+                        <input [(ngModel)]="bookSpotObj.custMobileNo" type="text" name="custMobileNo" id="contactNumber"
+                            placeholder="Enter contact number" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeModal()" type="button" data-bs-dismiss="modal" class="btn btn-outline-secondary">
+                    Cancel
+                </button>
+                <button (click)="onBookSpot()" type="button" id="confirmBookBtn" class="btn btn-primary">
+                    <i class="bi bi-check2-circle me-1"></i>
+                    Confirm Booking
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Release Spot Modal -->
+<div #releaseSpot id="releaseSpotModal" tabindex="-1" aria-hidden="true" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title"><i class="bi bi-car-front me-2"></i> Release Parking Spot </h5>
+                <button (click)="closeReleaseModal()" type="button" data-bs-dismiss="modal" aria-label="Close" class="btn-close btn-close-white"></button>
+            </div>
+            <div class="modal-body">
+                <form novalidate="" id="releaseSpotForm" class="">
+                    <div class="mb-3">
+                        <label for="exitTime" class="form-label">Extra Amount</label>
+                        <input [(ngModel)]="markExitObj.extraCharge" type="text" id="exitTime" class="form-control ">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeReleaseModal()" type="button" data-bs-dismiss="modal" class="btn btn-outline-secondary">
+                    Cancel
+                </button>
+                <button (click)="onExitCar()" type="button" id="confirmReleaseBtn" class="btn btn-success">
+                    <i class="bi bi-check2-circle me-1"></i>
+                    Confirm Release
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
