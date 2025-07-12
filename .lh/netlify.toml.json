@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1752342928726,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752343483749,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,8 @@\n+[build]\n+publish = \"dist\" # Ensure this points to your build folder\n+command = \"npm run build\" # Adjust this if your build command is different\n+\n [[redirects]]\n   from = \"/*\"\n   to = \"/index.html\"\n   status = 200\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1752342928726,
