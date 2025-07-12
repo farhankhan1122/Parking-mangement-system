@@ -27,3 +27,32 @@ export interface ResponseModel {
   result: boolean
   data: any
 }
+
+export interface SiteData {
+  siteId: number
+  clientId: number
+  siteName: string
+  siteCity: string
+  siteAddress: string
+  sitePinCode: string
+  totalBuildings: number
+  createdDate: string
+}
+
+
+export interface BuildingData {
+  buildingId: number
+  siteId: number
+  buildingName: string
+  buildingManagerName: string
+  contactNo: string
+  siteName: string
+}
+
+export interface FloorData {
+  floorId: number
+  buildingId: number
+  floorNo: string
+  isOperational: boolean
+  totalParkingSpots: number
+}

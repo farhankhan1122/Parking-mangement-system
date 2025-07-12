@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/styles.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1752234535612,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1752234570031,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,5 +46,8 @@\n .parking-spot.available {\n     background-color: #d1e7dd;\n     color: var(--success-color);\n     border-color: var(--success-color);\n+}\n+.parking-spot:hover {\n+    transform: translateY(-3px);\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1752234535612,
+            "name": "Commit-0",
+            "content": "/* You can add global styles to this file, and also import other style files */\n\n.parking-layout {\n    display: grid;\n    grid-template-columns: repeat(auto-fill,minmax(120px,1fr));\n    gap: 15px;\n    padding: 10px;\n}\n.parking-spot.occupied {\n    background-color: #f8d7da;\n    color: var(--danger-color);\n    border-color: var(--danger-color);\n}\n.parking-spot {\n    position: relative;\n    padding: 15px 10px;\n    border-radius: 8px;\n    text-align: center;\n    font-weight: 600;\n    cursor: pointer;\n    transition: all .2s ease;\n    border: 2px solid transparent;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    min-height: 90px;\n}\n.parking-spot i {\n    font-size: 1.2rem;\n    margin-bottom: 5px;\n}\n.parking-spot .spot-number {\n    font-size: 1.2rem;\n    font-weight: 700;\n}\n.parking-spot .spot-status {\n    font-size: .75rem;\n    margin-top: 5px;\n}\n.parking-spot .vehicle-info {\n    font-size: .7rem;\n    margin-top: 5px;\n    color: var(--gray-700);\n}\n.parking-spot.available {\n    background-color: #d1e7dd;\n    color: var(--success-color);\n    border-color: var(--success-color);\n}"
+        }
+    ]
+}

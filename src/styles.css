@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+
+.parking-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(120px,1fr));
+    gap: 15px;
+    padding: 10px;
+}
+.parking-spot.occupied {
+    background-color: #f8d7da;
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+.parking-spot {
+    position: relative;
+    padding: 15px 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s ease;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90px;
+}
+.parking-spot i {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+.parking-spot .spot-number {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.parking-spot .spot-status {
+    font-size: .75rem;
+    margin-top: 5px;
+}
+.parking-spot .vehicle-info {
+    font-size: .7rem;
+    margin-top: 5px;
+    color: var(--gray-700);
+}
+.parking-spot.available {
+    background-color: #d1e7dd;
+    color: var(--success-color);
+    border-color: var(--success-color);
+}
+.parking-spot:hover {
+    transform: translateY(-3px);
+}

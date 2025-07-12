@@ -9,7 +9,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class LoginService {
 
-  loggedUserData !: LoginResponseData
+  loggedUserData ?: LoginResponseData
   private isBrowser: boolean;
 
   constructor(

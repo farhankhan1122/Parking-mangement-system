@@ -10,11 +10,39 @@ import { LoginService } from '../login-service/login.service';
 export class DashboardService {
 
   loginService = inject(LoginService);
+  apiUrl: string = 'https://api.freeprojectapi.com/api/SmartParking/'
 
   constructor(private http: HttpClient) { }
 
   getSitesByClientId(): Observable<ResponseModel> {
-    const clientId = this.loginService.loggedUserData.extraId
-     return this.http.get<ResponseModel>('https://api.freeprojectapi.com/api/SmartParking/GetSitesByClientId?id='+clientId)
+    const userData = this.loginService.loggedUserData;
+    if (!userData) {
+      throw new Error('User is not logged in.');
+    }
+
+    // const clientId = this.loginService.loggedUserData.extraId
+    const clientId = userData.extraId;
+    return this.http.get<ResponseModel>(this.apiUrl + "GetSitesByClientId?id=" + clientId)
+  }
+
+  getBuildingsBySiteId(siteId: string): Observable<ResponseModel> {
+    return this.http.get<ResponseModel>(`${this.apiUrl}GetBuildingBySiteId?id=${siteId}`)
+  }
+
+  getFloorsByBuildingId(buildingId: string): Observable<ResponseModel> {
+    return this.http.get<ResponseModel>(`${this.apiUrl}GetFloorsByBuildingId?id=${buildingId}`)
+  }
+
+  getAllParkingByFloor(floorId: string): Observable<ResponseModel> {
+    return this.http.get<ResponseModel>(`${this.apiUrl}GetAllParkingByFloor?id=${floorId}`)
+  }
+
+  bookSpot(obj: any): Observable<ResponseModel> {
+    return this.http.post<ResponseModel>(`${this.apiUrl}AddParking`, obj)
+  }
+
+  releaseSpot(obj: any): Observable<ResponseModel> {
+    return this.http.post<ResponseModel>(`${this.apiUrl}MarExit`, obj)
   }
 }
+

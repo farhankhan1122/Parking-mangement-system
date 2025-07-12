@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 7,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1751601190165,
@@ -36,6 +36,10 @@
                 {
                     "date": 1752117985452,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,22 +1,29 @@\n import { HttpClient } from '@angular/common/http';\n-import { Injectable } from '@angular/core';\n+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';\n import { LoginRequestData, LoginResponseData } from '../../models/login.model';\n import { Observable } from 'rxjs';\n+import { isPlatformBrowser } from '@angular/common';\n \n @Injectable({\n   providedIn: 'root'\n })\n export class LoginService {\n \n   loggedUserData !: LoginResponseData\n+  private isBrowser: boolean;\n \n   constructor(\n-    private http: HttpClient\n+    private http: HttpClient,\n+    @Inject(PLATFORM_ID) private platformId: object\n   ) { \n-    const loggedData = localStorage.getItem('parkUser')\n-    if(loggedData != null){\n-      this.loggedUserData = JSON.parse(loggedData)\n+    this.isBrowser = isPlatformBrowser(this.platformId)\n+\n+    if(this.isBrowser) {\n+      const loggedData = localStorage.getItem('parkUser')\n+      if(loggedData != null){\n+        this.loggedUserData = JSON.parse(loggedData)\n+      }\n     }\n    }\n \n   loginUser(obj: LoginRequestData): Observable<LoginResponseData> {\n"
+                },
+                {
+                    "date": 1752143611276,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n   providedIn: 'root'\n })\n export class LoginService {\n \n-  loggedUserData !: LoginResponseData\n+  loggedUserData ?: LoginResponseData\n   private isBrowser: boolean;\n \n   constructor(\n     private http: HttpClient,\n"
                 }
             ],
             "date": 1751601190165,

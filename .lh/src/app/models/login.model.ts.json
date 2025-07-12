@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 2,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1751601447159,
@@ -16,6 +16,18 @@
                 {
                     "date": 1751612676466,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,5 +19,11 @@\n   projectName: string\n   fullName: string\n   mobileNo: string\n   extraId: number\n+}\n+\n+export interface ResponseModel {\n+  message: string\n+  result: boolean\n+  data: any\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1752138830706,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,5 +25,16 @@\n export interface ResponseModel {\n   message: string\n   result: boolean\n   data: any\n+}\n+\n+export interface SiteData {\n+  siteId: number\n+  clientId: number\n+  siteName: string\n+  siteCity: string\n+  siteAddress: string\n+  sitePinCode: string\n+  totalBuildings: number\n+  createdDate: string\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1752141641371,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,5 +36,15 @@\n   siteAddress: string\n   sitePinCode: string\n   totalBuildings: number\n   createdDate: string\n+}\n+\n+\n+export interface BuildingData {\n+  buildingId: number\n+  siteId: number\n+  buildingName: string\n+  buildingManagerName: string\n+  contactNo: string\n+  siteName: string\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1752143196745,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,5 +46,13 @@\n   buildingName: string\n   buildingManagerName: string\n   contactNo: string\n   siteName: string\n+}\n+\n+export interface FloorData {\n+  floorId: number\n+  buildingId: number\n+  floorNo: string\n+  isOperational: boolean\n+  totalParkingSpots: number\n }\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1751601447159,
