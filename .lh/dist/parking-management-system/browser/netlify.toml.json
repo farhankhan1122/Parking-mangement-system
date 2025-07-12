@@ -1,0 +1,18 @@
+{
+    "sourceFile": "dist/parking-management-system/browser/netlify.toml",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1752341919527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1752341919527,
+            "name": "Commit-0",
+            "content": "[[redirects]]\n\n    from = \"/*\"\n\n    to = \"/index.html\"\n\n    status = 200"
+        }
+    ]
+}
