@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 6,
             "patches": [
                 {
                     "date": 1751572278944,
@@ -28,6 +28,10 @@
                 {
                     "date": 1752340528038,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,12 +23,8 @@\n             \"assets\": [\n               {\n                 \"glob\": \"**/*\",\n                 \"input\": \"public\"\n-              },\n-              {\n-                \"glob\": \"**/*\",\n-                \"input\": \"public\"\n               }\n             ],\n             \"styles\": [\n               \"node_modules/bootstrap/dist/css/bootstrap.min.css\",\n@@ -93,12 +89,8 @@\n             \"assets\": [\n               {\n                 \"glob\": \"**/*\",\n                 \"input\": \"public\"\n-              },\n-              {\n-                \"glob\": \"**/*\",\n-                \"input\": \"public\"\n               }\n             ],\n             \"styles\": [\n               \"src/styles.css\"\n"
+                },
+                {
+                    "date": 1752340761314,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,10 @@\n             \"tsConfig\": \"tsconfig.app.json\",\n             \"assets\": [\n               {\n                 \"glob\": \"**/*\",\n-                \"input\": \"public\"\n+                \"input\": \"public\",\n+                \"output\": \"/\"\n               }\n             ],\n             \"styles\": [\n               \"node_modules/bootstrap/dist/css/bootstrap.min.css\",\n@@ -88,9 +89,10 @@\n             \"tsConfig\": \"tsconfig.spec.json\",\n             \"assets\": [\n               {\n                 \"glob\": \"**/*\",\n-                \"input\": \"public\"\n+                \"input\": \"public\",\n+                \"output\": \"/\"\n               }\n             ],\n             \"styles\": [\n               \"src/styles.css\"\n"
                 }
             ],
             "date": 1751572278944,
