@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 5,
             "patches": [
                 {
                     "date": 1751572278944,
@@ -20,6 +20,14 @@
                 {
                     "date": 1752340264385,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,13 @@\n               {\n                 \"glob\": \"**/*\",\n                 \"input\": \"public\"\n               },\n-              \"src/_redirects\"\n+              {\n+                \"glob\": \"_redirects\",\n+                \"input\": \"src\",\n+                \"output\": \"./\"\n+              }\n             ],\n             \"styles\": [\n               \"node_modules/bootstrap/dist/css/bootstrap.min.css\",\n               \"src/styles.css\"\n@@ -91,9 +95,13 @@\n               {\n                 \"glob\": \"**/*\",\n                 \"input\": \"public\"\n               },\n-              \"src/_redirects\"\n+              {\n+                \"glob\": \"_redirects\",\n+                \"input\": \"src\",\n+                \"output\": \"./\"\n+              }\n             ],\n             \"styles\": [\n               \"src/styles.css\"\n             ],\n@@ -102,5 +110,5 @@\n         }\n       }\n     }\n   }\n-}\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1752340475727,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,11 +25,10 @@\n                 \"glob\": \"**/*\",\n                 \"input\": \"public\"\n               },\n               {\n-                \"glob\": \"_redirects\",\n-                \"input\": \"src\",\n-                \"output\": \"./\"\n+                \"glob\": \"**/*\",\n+                \"input\": \"public\"\n               }\n             ],\n             \"styles\": [\n               \"node_modules/bootstrap/dist/css/bootstrap.min.css\",\n@@ -96,11 +95,10 @@\n                 \"glob\": \"**/*\",\n                 \"input\": \"public\"\n               },\n               {\n-                \"glob\": \"_redirects\",\n-                \"input\": \"src\",\n-                \"output\": \"./\"\n+                \"glob\": \"**/*\",\n+                \"input\": \"public\"\n               }\n             ],\n             \"styles\": [\n               \"src/styles.css\"\n"
+                },
+                {
+                    "date": 1752340528038,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,12 +23,8 @@\n             \"assets\": [\n               {\n                 \"glob\": \"**/*\",\n                 \"input\": \"public\"\n-              },\n-              {\n-                \"glob\": \"**/*\",\n-                \"input\": \"public\"\n               }\n             ],\n             \"styles\": [\n               \"node_modules/bootstrap/dist/css/bootstrap.min.css\",\n@@ -93,12 +89,8 @@\n             \"assets\": [\n               {\n                 \"glob\": \"**/*\",\n                 \"input\": \"public\"\n-              },\n-              {\n-                \"glob\": \"**/*\",\n-                \"input\": \"public\"\n               }\n             ],\n             \"styles\": [\n               \"src/styles.css\"\n"
                 }
             ],
             "date": 1751572278944,
